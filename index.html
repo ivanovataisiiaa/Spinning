@@ -1,2 +1,172 @@
-Hi There!
-how are you doing today?
+<!DOCUMENT html>
+    <html lang="en">
+
+    <head>
+
+        <style>
+            @keyframes bigSwing {
+                from {
+                    transform: translate(500px, 400px) rotate(30deg) rotateX(0deg);
+                }
+
+                to {
+                    transform: translate(500px, 400px) rotate(30deg) rotateX(-150deg);
+                }
+            }
+
+            @keyframes swingBack {
+                from {
+                    transform: translate(500px, 400px) rotate(30deg) rotateX(-150deg);
+                }
+
+                to {
+                    transform: translate(500px, 400px) rotate(30deg) rotateX(0deg);
+                }
+            }
+
+            .swing {
+                width: 700px;
+                height: auto;
+                transform-origin: 0% 0%;
+                transition: transform 1s cubic-bezier(.25, .8, .25, 1), box-shadow 0.8s;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: px 6px 5px 0px / 8px 6px 5px 0px;
+                /* Curved corners */
+                box-shadow:
+                    0 8px 52px rgba(0, 0, 0, 0.25),
+                    0 2px 8px rgba(0, 0, 0, 0.15),
+                    0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+                background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.05) 100%);
+                /* Optional: subtle 3D perspective */
+                perspective: 900px;
+                /* Optional: slight curve effect */
+                filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.10));
+            }
+
+            .swing.active {
+                animation: bigSwing 1s cubic-bezier(.25, .8, .25, 1) forwards;
+                z-index: 10;
+                backface-visibility: hidden;
+            }
+
+            .swing.back {
+                animation: swingBack 1s cubic-bezier(.25, .8, .25, 1) forwards;
+                z-index: 10;
+                backface-visibility: hidden;
+            }
+
+            #a {
+                transform: translate(500px, 400px) rotate(50deg);
+            }
+
+            #b {
+                transform: translate(500px, 400px) rotate(49deg);
+            }
+
+            #c {
+                transform: translate(500px, 400px) rotate(48deg);
+            }
+
+            #d {
+                transform: translate(500px, 400px) rotate(47deg);
+            }
+
+            .swing:hover {
+                transform: translate(500px, 400px) rotate(15deg) perspective(800px) rotateY(-6deg);
+                box-shadow: 0 16px 64px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18);
+            }
+
+            #e {
+                transform: translate(500px, 400px) rotate(46deg);
+            }
+
+            #f {
+                transform: translate(500px, 400px) rotate(45deg);
+            }
+
+            #g {
+                transform: translate(500px, 400px) rotate(44deg);
+            }
+
+            #h {
+                transform: translate(500px, 400px) rotate(43deg);
+            }
+
+            #i {
+                transform: translate(500px, 400px) rotate(42deg);
+            }
+
+            #j {
+                transform: translate(500px, 400px) rotate(41deg);
+            }
+
+            #k {
+                transform: translate(500px, 400px) rotate(39deg);
+            }
+
+            body {
+                background: url('/images/background.png') no-repeat center center fixed;
+                background-size: cover;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+
+
+    </head>
+
+    <body>
+        <div class="swing-stack">
+            <img id="a" class="swing" src="/images/01.png" />
+            <img id="b" class="swing" src="/images/00.png" />
+            <img id="c" class="swing" src="/images/09.png" />
+            <img id="d" class="swing" src="/images/03.png" />
+            <img id="e" class="swing" src="/images/04.png" />
+            <img id="f" class="swing" src="/images/05.png" />
+            <img id="g" class="swing" src="/images/06.png" />
+            <img id="h" class="swing" src="/images/07.png" />
+            <img id="i" class="swing" src="/images/08.png" />
+            <img id="j" class="swing" src="/images/10.png" />
+            <img id="k" class="swing" src="/images/02.png" />
+        </div>
+        <script>
+            const images = document.querySelectorAll('.swing');
+            let current = 0;
+            let interval = 2000; // 2 seconds per swing
+
+            function swingNext() {
+                images.forEach(img => {
+                    img.classList.remove('active');
+                    img.classList.remove('back');
+                });
+                images[current].classList.add('active');
+                current = (current + 1) % images.length;
+            }
+
+            // Start the automatic swinging
+            swingNext();
+            setInterval(swingNext, interval);
+
+            // Toggle swing up/down on click
+            images.forEach((image, idx) => {
+                image.addEventListener('click', () => {
+                    if (image.classList.contains('active')) {
+                        image.classList.remove('active');
+                        image.classList.add('back');
+                    } else {
+                        images.forEach(img => {
+                            img.classList.remove('active');
+                            img.classList.remove('back');
+                        });
+                        image.classList.add('active');
+                        current = (idx + 1) % images.length;
+                    }
+                });
+            });
+        </script>
+
+    </body>
+
+    </html>
