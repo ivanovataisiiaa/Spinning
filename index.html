@@ -2,25 +2,71 @@
 <html lang="en">
     <head>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <style>
             @keyframes bigSwing {
               from {
-                transform: translate(500px, 0px) rotate(30deg) rotateZ(0deg);
+                transform: rotate(30deg) rotateZ(0deg);
               }
               to {
-                transform: translate(500px, 0px) rotate(30deg) rotateZ(-25deg);
+                transform: rotate(30deg) rotateZ(-25deg);
               }
             }
             @keyframes swingBack {
               from {
-                transform: translate(500px, 0px) rotate(30deg) rotateZ(-25deg);
+                transform: rotate(30deg) rotateZ(-25deg);
               }
               to {
-                transform: translate(500px, 0px) rotate(30deg) rotateZ(10deg);
+                transform: rotate(30deg) rotateZ(10deg);
               }
             }
+
+            /* Small screens */
+            @media screen and (max-width: 600px) {
+                .swing {
+                    width: 90%;
+                }
+
+                .swing-stack
+                {
+                    margin-left: 20vw;
+                    margin-top: 10vw;
+                }
+            }
+
+            /* Medium screens */
+            @media screen and (min-width: 601px) and (max-width: 1200px) {
+                .swing {
+                    width: 600px;
+                }
+
+                .swing-stack
+                {
+                    margin-left: 30vw;
+                }
+            }
+
+
+            /* Big screens */
+            @media screen and (min-width: 1201px) {
+                .swing {
+                    width: 800px;
+                }
+
+                .swing-stack
+                {
+                    margin-left: 30vw;
+                }
+            }
+            
+            .swing-stack {
+                position:relative;
+            }
+
+            
             .swing {
-                width: 600px;
+                
                 height: auto;
                 transform-origin: 0% 0%;
                 transition: transform 1s cubic-bezier(.25,.8,.25,1), box-shadow 0.8s;
@@ -49,42 +95,42 @@
                 backface-visibility: hidden;
             }
             #a {
-                transform: translate(500px, 0px) rotate(50deg);
+                transform: rotate(50deg);
             }
             #b {
-                transform: translate(500px, 0px) rotate(49deg);
+                transform: rotate(49deg);
             }
             #c {
-                transform: translate(500px, 0px) rotate(48deg);
+                transform: rotate(48deg);
             }
             #d {
-                transform: translate(500px, 0px) rotate(47deg);
+                transform: rotate(47deg);
             }
 
             .swing:hover {
-                transform: translate(500px, 0px) rotate(15deg) perspective(800px) rotateY(-6deg);
+                transform: rotate(15deg) perspective(800px) rotateY(-6deg);
                 box-shadow: 0 16px 64px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.18);
             }
             #e {
-                transform: translate(500px, 0px) rotate(46deg);
+                transform: rotate(46deg);
             }
             #f {
-                transform: translate(500px, 0px) rotate(45deg);
+                transform: rotate(45deg);
             }
             #g {
-                transform: translate(500px, 0px) rotate(44deg);
+                transform: rotate(44deg);
             }
             #h {
-                transform: translate(500px, 0px) rotate(43deg);
+                transform: rotate(43deg);
             }
             #i {
-                transform: translate(500px, 0px) rotate(42deg);
+                transform: rotate(42deg);
             }
             #j {
-                transform: translate(500px, 0px) rotate(41deg);
+                transform: rotate(41deg);
             }   
             #k {
-                transform: translate(500px, 0px) rotate(39deg);
+                transform: rotate(39deg);
             }
             body {
                 background: url('./images/background.jpeg') no-repeat center center fixed;
@@ -149,3 +195,5 @@
 
     </body>
 </html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
